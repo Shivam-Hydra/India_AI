@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARTHI 2.0 - Heritage Intelligence System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C5530;
+            --secondary: #7E8D85;
+            --accent: #B9935A;
+            --light: #F8F5F0;
+            --dark: #1A1D1A;
+            --highlight: #E3D2B3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header with new design */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1e3a23);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        
+        .logo-text span {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(185, 147, 90, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #a87e48;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--accent);
+            background-color: rgba(185, 147, 90, 0.1);
+        }
+        
+        /* Hero Section - New Design */
+        .hero {
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, rgba(44, 85, 48, 0.9), rgba(30, 58, 35, 0.9)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Features Section - New Card Design */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-icon:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.1));
+        }
+        
+        .feature-content {
+            padding: 25px;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .feature-content p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
+        }
+        
+        .feature-link:hover {
+            gap: 10px;
+        }
+        
+        /* How It Works - Timeline Design */
+        .how-it-works {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, var(--light), #f0ebe2);
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+            right: -10px;
+            top: 30px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+            left: -10px;
+            top: 30px;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -25px;
+            top: 25px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -25px;
+            top: 25px;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* Architecture Section - New Design */
+        .architecture {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .arch-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .arch-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .arch-card {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 5px solid var(--accent);
+            max-width: 250px;
+        }
+        
+        .arch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .arch-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .arch-content {
+            padding: 20px;
+        }
+        
+        .arch-content ul {
+            list-style-type: none;
+        }
+        
+        .arch-content li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .arch-content li:last-child {
+            border-bottom: none;
+        }
+        
+        .arch-content li i {
+            color: var(--accent);
+            margin-top: 3px;
+        }
+        
+        /* Metrics Section - New Design */
+        .metrics {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), #1e3a23);
+            color: white;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Integration Section - New Design */
+        .integration {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .integration-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .integration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        .integration-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .integration-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Business Model - New Design */
+        .business-model {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .model-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .model-nav {
+            flex: 1;
+            background: var(--light);
+            border-radius: 15px;
+            padding: 20px;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .model-nav ul {
+            list-style: none;
+        }
+        
+        .model-nav li {
+            margin-bottom: 10px;
+        }
+        
+        .model-nav a {
+            display: block;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        
+        .model-nav a:hover, .model-nav a.active {
+            background: var(--primary);
+            color: white;
+            border-left-color: var(--accent);
+        }
+        
+        .model-content {
+            flex: 2;
+        }
+        
+        .model-section {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .model-section h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .model-section ul {
+            list-style-type: none;
+            margin-left: 0;
+        }
+        
+        .model-section li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .model-section li:before {
+            content: "▸";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Footer - New Design */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .model-container {
+                flex-direction: column;
+            }
+            
+            .model-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-icon,
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: 15px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:after,
+            .timeline-item:nth-child(even) .timeline-content:after {
+                left: -10px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .arch-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .arch-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with new design -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-monument"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>SARTHI 2.0</h1>
+                    <span>Heritage Intelligence System</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#architecture">AI Architecture</a></li>
+                    <li><a href="#metrics">Performance</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline"><i class="fas fa-user"></i> Login</button>
+                <button class="btn btn-primary"><i class="fas fa-download"></i> Get App</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with new design -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Transforming Heritage Exploration with AI Intelligence</h2>
+                <p>SARTHI 2.0 is your smart digital companion that enhances visitor experiences while protecting India's cultural heritage through cutting-edge AI technology.</p>
+                <button class="btn btn-primary"><i class="fas fa-compass"></i> Start Your Journey</button>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">91%</span>
+                        <span class="stat-label">Story Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">88%</span>
+                        <span class="stat-label">Safety Precision</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">32%</span>
+                        <span class="stat-label">Learning Improvement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section with new card design -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Revolutionary Features</h2>
+                <p>SARTHI 2.0 combines advanced AI with cultural heritage preservation for an unparalleled visitor experience</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Smart Geofencing</h3>
+                        <p>Automatically detects when you enter heritage sites and loads site-specific content instantly without manual input.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Cultural Narration</h3>
+                        <p>Location-based audio stories that automatically play as you explore, explaining architecture, legends, and history.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Safety Monitoring</h3>
+                        <p>Real-time alerts about crowded areas, restricted zones, and potential hazards to ensure visitor safety.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Emergency SOS</h3>
+                        <p>Instant connection to authorities with location sharing and self-help instructions until assistance arrives.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Four AI Brains</h3>
+                        <p>Cultural, Rule, Safety, and Tourism intelligence systems working together for comprehensive guidance.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Authority Dashboard</h3>
+                        <p>Real-time insights for site managers about visitor flow, safety incidents, and maintenance needs.</p>
+                        <a href="#" class="feature-link">Learn more <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works with Timeline Design -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How SARTHI Works</h2>
+                <p>Experience seamless heritage exploration with our intuitive step-by-step process</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-map-pin"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Entering a Monument</h3>
+                        <p>As you approach a heritage site, SARTHI automatically detects your location using geofencing technology and downloads the site-specific information pack.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Guided Experience</h3>
+                        <p>You're welcomed with a personalized voice message and presented with a detailed map showing structures, paths, viewpoints, and facilities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Cultural Narration</h3>
+                        <p>As you walk through the site, SARTHI automatically triggers location-based audio narratives about architecture, history, and cultural significance.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Safety Monitoring</h3>
+                        <p>The app constantly monitors for overcrowding and restricted zones, sending gentle alerts if you approach protected or hazardous areas.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Emergency Support</h3>
+                        <p>If you need help, the SOS button immediately shares your location with authorities and provides self-help instructions until assistance arrives.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Interactive Learning</h3>
+                        <p>Ask questions by voice, take cultural quizzes, explore lesser-known stories, and get personalized recommendations for further exploration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section with New Design -->
+    <section class="architecture" id="architecture">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Architecture</h2>
+                <p>SARTHI's four specialized intelligence systems work in harmony to deliver comprehensive heritage experiences</p>
+            </div>
+            <div class="arch-container">
+                <div class="arch-row">
+                    <div class="arch-card">
+                        <div class="arch-header">
+                            <h3>Cultural Brain</h3>
+                        </div>
+                        <div class="arch-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Authentic stories & historical facts</li>
+                                <li><i class="fas fa-check"></i> Engaging narration scripts</li>
+                                <li><i class="fas fa-check"></i> Cultural context preservation</li>
+                                <li><i class="fas fa-check"></i> Expert-verified content</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-card">
+                        <div class="arch-header">
+                            <h3>Rule Brain</h3>
+                        </div>
+                        <div class="arch-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Monument-specific regulations</li>
+                                <li><i class="fas fa-check"></i> Prohibited activity detection</li>
+                                <li><i class="fas fa-check"></i> Legal compliance guidance</li>
+                                <li><i class="fas fa-check"></i> Preservation guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-row">
+                    <div class="arch-card">
+                        <div class="arch-header">
+                            <h3>Safety Brain</h3>
+                        </div>
+                        <div class="arch-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Crowd monitoring & alerts</li>
+                                <li><i class="fas fa-check"></i> Hazard detection systems</li>
+                                <li><i class="fas fa-check"></i> Restricted zone monitoring</li>
+                                <li><i class="fas fa-check"></i> Emergency response coordination</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="arch-card">
+                        <div class="arch-header">
+                            <h3>Tourism Brain</h3>
+                        </div>
+                        <div class="arch-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Personalized itinerary planning</li>
+                                <li><i class="fas fa-check"></i> Local attraction recommendations</li>
+                                <li><i class="fas fa-check"></i> Artisan marketplace integration</li>
+                                <li><i class="fas fa-check"></i> Visitor preference learning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section with New Design -->
+    <section class="metrics" id="metrics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Performance Metrics</h2>
+                <p>SARTHI has been rigorously tested across various conditions to ensure reliability and effectiveness</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-value">91%</span>
+                    <span class="metric-label">Story Accuracy</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">88%</span>
+                    <span class="metric-label">Safety Alert Precision</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">32%</span>
+                    <span class="metric-label">Learning Improvement</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">4.4/5</span>
+                    <span class="metric-label">Audio Quality Rating</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-value">0.87</span>
+                    <span class="metric-label">Recommendation Relevance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section with New Design -->
+    <section class="integration">
+        <div class="container">
+            <div class="section-title">
+                <h2>System Integration</h2>
+                <p>SARTHI seamlessly connects with heritage management and tourism infrastructure</p>
+            </div>
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="integration-content">
+                        <h3>ASI Dashboards</h3>
+                        <p>Direct integration with Archaeological Survey of India monitoring systems</p>
+                    </div>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <div class="integration-content">
+                        <h3>State Tourism Boards</h3>
+                        <p>Collaboration with state tourism departments to enhance visitor experiences</p>
+                    </div>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="integration-content">
+                        <h3>Police Alert Networks</h3>
+                        <p>Connection with police control rooms for emergency response</p>
+                    </div>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="integration-content">
+                        <h3>Incredible India</h3>
+                        <p>Access to official heritage data and cultural information</p>
+                    </div>
+                </div>
+                <div class="integration-card">
+                    <div class="integration-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="integration-content">
+                        <h3>ONDC Marketplace</h3>
+                        <p>Integration to promote local artisans and craftspeople</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model with New Design -->
+    <section class="business-model">
+        <div class="container">
+            <div class="section-title">
+                <h2>Business Model</h2>
+                <p>Sustainable approach ensuring long-term viability and impact</p>
+            </div>
+            <div class="model-container">
+                <div class="model-nav">
+                    <ul>
+                        <li><a href="#freemium" class="active">Freemium Model</a></li>
+                        <li><a href="#revenue">Revenue Streams</a></li>
+                        <li><a href="#impact">Impact Potential</a></li>
+                    </ul>
+                </div>
+                <div class="model-content">
+                    <div class="model-section" id="freemium">
+                        <h3>Freemium Access Model</h3>
+                        <ul>
+                            <li><strong>Free Tier:</strong> Basic cultural stories, navigation assistance, rule awareness, and safety alerts available to all users</li>
+                            <li><strong>Premium Tier:</strong> Advanced features including exclusive cultural tours, AR experiences, in-depth storytelling, and personalized itineraries</li>
+                            <li><strong>Enterprise Tier:</strong> Custom dashboard access for heritage site authorities and tourism departments</li>
+                        </ul>
+                    </div>
+                    <div class="model-section" id="revenue">
+                        <h3>Diverse Revenue Streams</h3>
+                        <ul>
+                            <li><strong>Tourism Board Partnerships:</strong> Collaboration with state and national tourism departments</li>
+                            <li><strong>Dashboard Licensing:</strong> Customized management dashboards for heritage site authorities</li>
+                            <li><strong>Artisan Marketplace Commissions:</strong> Percentage from sales through ONDC integration</li>
+                            <li><strong>Premium Subscriptions:</strong> Monthly or annual subscriptions for advanced features</li>
+                        </ul>
+                    </div>
+                    <div class="model-section" id="impact">
+                        <h3>Impact Potential</h3>
+                        <ul>
+                            <li><strong>Visitor Experience:</strong> More responsible behavior, deeper cultural understanding, enhanced safety</li>
+                            <li><strong>Heritage Preservation:</strong> Reduced monument damage, better conservation awareness</li>
+                            <li><strong>Economic Benefits:</strong> Increased income for local artisans, extended tourist stays</li>
+                            <li><strong>Safety Improvements:</strong> Faster emergency response, safer environments for all visitors</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with New Design -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SARTHI 2.0</h3>
+                    <p>AI-Enabled Heritage Protection, Visitor Safety & Tourism Enhancement System</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#architecture">AI Architecture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Heritage Resources</h3>
+                    <ul>
+                        <li><a href="#">ASI Monuments</a></li>
+                        <li><a href="#">Cultural Circuits</a></li>
+                        <li><a href="#">Heritage Laws</a></li>
+                        <li><a href="#">Tourism Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@sarthi.org</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Delhi, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SARTHI Heritage Intelligence Collective. All rights reserved. | AI for ALL: Global Impact Challenge 2025-26</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Business model navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.model-nav a');
+            const sections = document.querySelectorAll('.model-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    sections.forEach(s => s.style.display = 'none');
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).style.display = 'block';
+                });
+            });
+            
+            // Initialize first section as active
+            document.querySelector('.model-nav a.active').click();
+        });
+    </script>
+</body>
+</html>
